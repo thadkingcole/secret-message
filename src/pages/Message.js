@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Message() {
+export default function Message(props) {
+
   return (
     <div>
-      An encrypted message goes here.
+      {props.match.params.message}
     </div>
   )
 }
