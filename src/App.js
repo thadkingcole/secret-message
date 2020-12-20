@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
 import Message from "./pages/Message";
 
@@ -7,11 +7,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* page 1 */}
-        <Main />
-
-        {/* page 2 */}
-        <Message />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route path="/:message" component={Message} />
+          </Switch>
+        </Router>
       </header>
     </div>
   );
