@@ -19,8 +19,21 @@ export default function Main() {
     if (formObject.normMessage && formObject.encryptKey) {
       // TODO
       // encrypt the message
+      encrypt(formObject.normMessage, formObject.encryptKey);
       // navigate to "/decrypted-message"
+
     }
+  }
+
+  // very basic "encryption"
+  function encrypt(message, key) {
+    let encryptedMessage = "";
+    for (let i = 0; i < message.length; i++) {
+      const charCode = message.charCodeAt(i);
+
+      encryptedMessage += charCode + ",";
+    }
+    return encryptedMessage;
   }
 
   return (
