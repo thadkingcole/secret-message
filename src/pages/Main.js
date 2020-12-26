@@ -29,9 +29,9 @@ export default function Main(props) {
   function encrypt(message, key) {
     let encryptedMessage = "";
     for (let i = 0; i < message.length; i++) {
-      const charCode = message.charCodeAt(i);
+      const charCode = message.charCodeAt(i) + parseInt(key, 10);
 
-      encryptedMessage += charCode + ",";
+      encryptedMessage += String.fromCharCode(charCode);
     }
     return encryptedMessage;
   }
