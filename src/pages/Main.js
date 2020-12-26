@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export default function Main() {
+export default function Main(props) {
   const [formObject, setFormObject] = useState({});
 
   // Handles updating component state when the user types into the input field
@@ -19,9 +19,9 @@ export default function Main() {
     if (formObject.normMessage && formObject.encryptKey) {
       // TODO
       // encrypt the message
-      encrypt(formObject.normMessage, formObject.encryptKey);
+      const newMessage = encrypt(formObject.normMessage, formObject.encryptKey);
       // navigate to "/decrypted-message"
-
+      props.history.push(`/${newMessage}`);
     }
   }
 
