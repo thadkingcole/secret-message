@@ -17,10 +17,9 @@ export default function Main(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.normMessage && formObject.encryptKey) {
-      // TODO
       // encrypt the message
       const newMessage = encrypt(formObject.normMessage, formObject.encryptKey);
-      // navigate to "/decrypted-message"
+      // navigate to "/:decrypted-message"
       props.history.push(`/${newMessage}`);
     }
   }
@@ -30,7 +29,6 @@ export default function Main(props) {
     let encryptedMessage = "";
     for (let i = 0; i < message.length; i++) {
       const charCode = message.charCodeAt(i) + parseInt(key, 10);
-
       encryptedMessage += String.fromCharCode(charCode);
     }
     return encryptedMessage;
@@ -39,6 +37,7 @@ export default function Main(props) {
   return (
     <>
       <Form>
+        {/* Message to encrypt */}
         <Form.Group controlId="normMessage">
           <Form.Label>Type the message you want to encrypt</Form.Label>
           <Form.Control
@@ -49,6 +48,7 @@ export default function Main(props) {
           />
         </Form.Group>
 
+        {/* Encryption key (must be an integer) */}
         <Form.Group controlId="encryptKey">
           <Form.Label>Choose an encryption key</Form.Label>
           <Form.Control
@@ -62,6 +62,7 @@ export default function Main(props) {
           </Form.Text>
         </Form.Group>
 
+        {/* Encryption button */}
         <Button
           disabled={!(formObject.normMessage && formObject.encryptKey)}
           onClick={handleFormSubmit}

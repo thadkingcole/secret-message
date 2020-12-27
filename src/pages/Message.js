@@ -4,28 +4,25 @@ import Button from "react-bootstrap/Button";
 
 export default function Message(props) {
   const [formObject, setFormObject] = useState({});
+  // get the message from the url/:message
   const [message, setMessage] = useState(props.match.params.message);
 
-  // const secret = props.match.params.message;
-  // console.log(secret);
-
+  // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
   }
 
+  // when form is submitted...
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.encryptKey) {
-      // TODO
-      // encrypt the message
-      // const newMessage = encrypt(formObject.normMessage, formObject.encryptKey);
-      // navigate to "/decrypted-message"
-      // props.history.push(`/${newMessage}`);
-      setMessage(decrypt(message, formObject.encryptKey))
+      // decrypt the message
+      setMessage(decrypt(message, formObject.encryptKey));
     }
   }
 
+  // decrypt function: inverse of encrypt function
   function decrypt(message, key) {
     let decryptedMessage = "";
     for (let i = 0; i < message.length; i++) {
@@ -38,7 +35,10 @@ export default function Message(props) {
 
   return (
     <>
-      {message}
+      {/* Message goes here */}
+      <h1 className="mb-5">{message}</h1>
+
+      {/* Decryption form */}
       <Form>
         <Form.Group controlId="encryptKey">
           <Form.Label>Enter the encryption key</Form.Label>
@@ -49,7 +49,7 @@ export default function Message(props) {
             type="number"
           />
           <Form.Text className="text-muted">
-            The person who sent this link should have told you the key.
+            The person who sent this link should tell you the key.
           </Form.Text>
         </Form.Group>
 
