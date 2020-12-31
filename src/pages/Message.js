@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 
 export default function Message(props) {
   const [formObject, setFormObject] = useState({});
@@ -33,6 +34,10 @@ export default function Message(props) {
     return decryptedMessage;
   }
 
+  function goHome() {
+    props.history.push("/");
+  }
+
   return (
     <>
       {/* Message goes here */}
@@ -40,28 +45,37 @@ export default function Message(props) {
 
       {/* Decryption form */}
       <Form>
-        <Form.Group controlId="encryptKey">
-          <Form.Label>Enter the encryption key</Form.Label>
+        <Form.Label>Enter the encryption key</Form.Label>
+        <InputGroup controlid="encryptKey">
           <Form.Control
             name="encryptKey"
             onChange={handleInputChange}
             placeholder="Enter key (integer)"
             type="number"
           />
-          <Form.Text className="text-muted">
-            The person who sent this link should tell you the key.
-          </Form.Text>
-        </Form.Group>
-
-        <Button
-          disabled={!formObject.encryptKey}
-          onClick={handleFormSubmit}
-          type="submit"
-          variant="primary"
-        >
-          Decrypt
-        </Button>
+          <InputGroup.Append>
+            <Button
+              disabled={!formObject.encryptKey}
+              onClick={handleFormSubmit}
+              type="submit"
+              variant="primary"
+            >
+              Decrypt
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+        <Form.Text className="text-muted">
+          The person who sent this link should tell you the key.
+        </Form.Text>
       </Form>
+
+      <Button
+        className="mt-5"
+        onClick={goHome}
+        variant="warning"
+      >
+        Make a new message
+      </Button>
     </>
   );
 }
