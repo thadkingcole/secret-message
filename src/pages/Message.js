@@ -45,7 +45,7 @@ export default function Message(props) {
 
       {/* Decryption form */}
       <Form>
-        <Form.Label>Enter the encryption key</Form.Label>
+        <Form.Label>Enter the decryption key</Form.Label>
         <InputGroup controlid="encryptKey">
           <Form.Control
             name="encryptKey"
