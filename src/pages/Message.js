@@ -52,6 +52,8 @@ export default function Message(props) {
             onChange={handleInputChange}
             placeholder="Enter key (integer)"
             type="number"
+            autoComplete="off"
+            autoFocus
           />
           <InputGroup.Append>
             <Button
@@ -69,11 +71,7 @@ export default function Message(props) {
         </Form.Text>
       </Form>
 
-      <Button
-        className="mt-5"
-        onClick={goHome}
-        variant="warning"
-      >
+      <Button className="mt-5" onClick={goHome} variant="warning">
         Make a new message
       </Button>
     </>

@@ -45,6 +45,8 @@ export default function Main(props) {
             onChange={handleInputChange}
             placeholder="Enter message"
             type="text"
+            autoComplete="off"
+            autoFocus
           />
         </Form.Group>
 
@@ -56,6 +58,7 @@ export default function Main(props) {
             onChange={handleInputChange}
             placeholder="Enter key (integer)"
             type="number"
+            autoComplete="off"
           />
           <Form.Text className="text-muted">
             Remember this key; It is needed in order to decrypt the message.
